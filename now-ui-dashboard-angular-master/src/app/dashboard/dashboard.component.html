@@ -1,0 +1,100 @@
+<div class=" panel-header-sm ">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card mb-3">
+        <img src="../../assets/img/formateurs.jpg"  alt="Image" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">Gerer les Formateurs</h5>
+          <a class="link" (click)="navigateToAddFormateur()">
+          <p class="card-text">ajouter un formateur</p>
+        </a>
+          <a class="link " (click)="navigateToFormateur()">
+          <p class="card-text">consulter la liste des formateurs</p>
+        </a>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+           
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <div class="col-lg-4 col-md-6">
+      <div class="card mb-3">
+        <img src="../../assets/img/cycles.jpg" height="326 px" alt="Image" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">Gerer les Cycles</h5>
+          <a class="link" (click)="navigateToAddCycle()">
+
+          <p class="card-text">ajouter un cycle</p>
+          </a>
+          <a class="link" (click)="navigateToCycle()">
+
+          <p class="card-text">consulter la liste des cycles</p>
+          </a>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <div class="card mb-3">
+        <img src="../../assets/img/participant.jpg" alt="Image" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">Gerer les Participants</h5>
+          <a class="link" (click)="navigateToAddParticipant()">
+          <p class="card-text">Ajouter un participant</p>
+          </a>
+          <a class="link" (click)="navigateToParticipant()">
+          <p class="card-text">consulter la liste des participants</p>
+</a>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- New row for the two additional cards -->
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img src="../../assets/img/addPart.jpg" alt="Image" class="float-left mr-3 mb-2" style="width:200px;">
+          <a class="link" (click)="navToAffectParticipant()">
+          <h5 class="card-title" style="margin-top: 50px;">Ajouter un participant à un cycle </h5>
+        </a>
+       
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img src="../../assets/img/addForm.jpg" alt="Image" class="float-left mr-3 mb-2" style="width: 200px;">
+          <a class="link" (click)="navToAffectFormateur()">
+          <h5  style="margin-top: 50px;" class="card-title">Ajouter un formateur à un cycle</h5>
+          </a>
+         
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.navbar,
+.navbar a,
+.navbar a:hover,
+.navbar a:focus,
+.navbar .navbar-toggler-bar,
+.navbar .navbar-kebab,
+.navbar .now-ui-icons {
+  color: black !important;
+}
+::placeholder{
+    color: gray !important;
+}

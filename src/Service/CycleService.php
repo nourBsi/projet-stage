@@ -25,9 +25,9 @@ class CycleService
 
     public function getAll(): array
     {
-        $formateur = $this->cycleRepository->findAll();
+        $cycle = $this->cycleRepository->findAll();
         $groups = ['formateurs', 'formateur','participant','participants','cecycle']; 
-        $serializedCycle = $this->serializer->serialize($formateur, 'json', ['groups' => $groups]);
+        $serializedCycle = $this->serializer->serialize($cycle, 'json', ['groups' => $groups]);
 
         return json_decode($serializedCycle, true);
     }

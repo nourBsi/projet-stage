@@ -1,0 +1,119 @@
+<div class=" panel-header-sm">
+</div>
+<p-table #dt [value]="formateurs" 
+             dataKey="index"
+             editMode="row" 
+             responsiveLayout="scroll"
+             [globalFilterFields]="['nomprenom', 'specialite', 'direction', 'entreprise']"
+             >
+    <ng-template pTemplate="caption">
+        <div class="table-header">
+            La liste des formateurs
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" 
+                       (input)=
+    "dt.filterGlobal($event.target.value, 'contains')" 
+                       placeholder="Recherche globale" />
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+           
+            <th pSortableColumn="nomprenom">
+                Nom et Prenom <p-sortIcon field="nomprenom"></p-sortIcon>
+            </th>
+            <th pSortableColumn="specialite">
+                Spécialite <p-sortIcon field="specialite"></p-sortIcon>
+            </th>
+            <th pSortableColumn="direction">
+                Direction <p-sortIcon field="direction"></p-sortIcon>
+            </th>
+            <th pSortableColumn="entreprise">
+                Entreprise <p-sortIcon field="entreprise"></p-sortIcon>
+            </th>
+            
+            <th style="width:8rem"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" 
+                 let-formateur let-editing="editing"
+                 let-ri="rowIndex">
+        <tr [pEditableRow]="formateur"  >
+            
+            <td (click)="editing ? null : navigateToDetails(formateur.id)">
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" 
+                               [(ngModel)]="formateur.nomprenom" />
+                    </ng-template>
+                    <ng-template pTemplate="output" >
+                        {{ formateur.nomprenom }}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td (click)="editing ? null : navigateToDetails(formateur.id)">
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" 
+                               [(ngModel)]="formateur.specialite" />
+                    </ng-template>
+                    <ng-template pTemplate="output" >
+                      
+                        {{ formateur.specialite }}
+                    </ng-template>
+             
+
+                </p-cellEditor>
+            </td>
+            <td (click)="editing ? null : navigateToDetails(formateur.id)">
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" 
+                               [(ngModel)]="formateur.direction" />
+                    </ng-template>
+                    <ng-template pTemplate="output"  >
+                        {{ formateur.direction }}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td (click)="editing ? null : navigateToDetails(formateur.id)">
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" 
+                               [(ngModel)]="formateur.entreprise" />
+                    </ng-template>
+                    <ng-template pTemplate="output" >
+                        {{ formateur.entreprise }}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+  
+            <td style="text-align:center">
+                <button *ngIf="!editing"
+                          pButton pRipple type="button" 
+                          pInitEditableRow icon="pi pi-pencil" 
+                          (click)="onRowEditInit(formateur, ri)" 
+                          class="p-button-rounded p-button-text">
+                </button>
+                <button *ngIf="editing" 
+                          pButton pRipple type="button" 
+                          pSaveEditableRow icon="pi pi-check" 
+                          (click)="onRowEditSave(formateur, ri)" 
+                          class="p-button-rounded 
+                                 p-button-text 
+                                 p-button-success mr-2">
+                </button>
+                <button *ngIf="editing" 
+                pButton pRipple type="button" 
+                pCancelEditableRow icon="pi pi-times" 
+                (click)="onRowEditCancel(formateur, ri)" 
+                class="p-button-rounded 
+                       p-button-text 
+                       p-button-danger">
+       </button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

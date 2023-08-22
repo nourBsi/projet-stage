@@ -1,0 +1,68 @@
+<div class=" panel-header-sm">
+</div>
+<div class="main-content">
+  <h2>Formulaire affectation d'un formateur a un cycle</h2>
+    <form #pickForm="ngForm">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="formateurs"> Formateurs</label>
+          <select id="formateurs" ngModel name="formateur" class="form-control" (change)="pickedFormateur(pickForm.value)">
+            <option value="null"></option>
+            <option *ngFor="let formateur of formateurs" [value]="formateur.id">{{formateur.nomprenom}} | {{formateur.id}}</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="cycles" > Cycles</label>
+
+          <select id="cycles" ngModel name="cycle" class="form-control" (change)="pickedCycle(pickForm.value)">
+            <option value="null"></option>
+            <option *ngFor="let cycle of cycles" [value]="cycle.id">{{cycle.theme}} | {{cycle.numact}}</option>
+          </select>
+        </div>
+      </div>
+      <br>
+      <div class="button-container">
+               
+        <button (click)="affectFormateur(pickForm.value)" class="btn btn-outline-secondary">affecter ce formateur</button>
+       
+       </div>
+    </form>
+    <div class="row" id="infoFormateur">
+      <div class="col-md-4 mt-0"  *ngIf="formateur != null">
+        <div class="card card-user">
+          <div class="image">
+            <img src="../assets/img/bg3.png" alt="...">
+          </div>
+          <div class="card-body mt-0">
+            <div class="author">
+              <a href="#">
+                <img class="avatar border-gray pb-4" src="../assets/img/user.jpg" alt="...">
+                <h5 class="title">{{formateur.nomprenom}}</h5>
+              </a>
+              <p class="description">
+                {{formateur.specialite}}
+              </p>
+            </div>
+            <p class="description text-center">
+              Travail chez: {{formateur.entreprise}}
+              <br>Direction: {{formateur.direction}}
+            </p>
+          </div>
+          <br>
+        </div>
+      </div>
+      <div class="col-md-8" id="infoCycle">
+
+          <!-- Content for Participant Info (if needed) -->
+          <div   *ngIf="cycle != null">
+              <div class="card-body">
+                <h5 class="card-title">Cycle sur {{cycle.theme}}</h5>
+                <p class="card-text">cycle numero {{cycle.numact}} entre le {{cycle.datedeb | date:"dd/MM/yyyy"}} et le {{cycle.datefin | date:"dd/MM/yyyy"}} dans la salle {{cycle.numsalle}}</p>
+              </div>
+            </div>
+        
+        <!-- Content for Participant Info (if needed) -->
+      </div>
+    </div>
+  </div>
+  

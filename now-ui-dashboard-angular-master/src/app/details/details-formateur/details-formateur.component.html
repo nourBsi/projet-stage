@@ -1,0 +1,75 @@
+<div *ngIf="isLoading">
+    <!-- Display a loading spinner -->
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+  <div *ngIf="!isLoading">
+    <div class="main-content ">
+        <div class="row">
+            <div class="col-md-8">
+              <div *ngIf="!notAvailable" >
+    
+            
+            
+    <p-table [columns]="cols" [value]="cycles" [tableStyle]="{ 'width': '100%', 'min-width': '50rem' }" responsiveLayout="scroll">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{ col.header }}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+              <ng-container *ngFor="let col of columns">
+                <td *ngIf="rowData[col.field]==rowData.datedeb || rowData[col.field]==rowData.datefin">
+                  {{ rowData[col.field] | date:"dd/MM/yyyy"}}
+              </td>
+              <td *ngIf="rowData[col.field]!=rowData.datedeb && rowData[col.field]!=rowData.datefin">
+                {{ rowData[col.field] }}
+            </td>
+              </ng-container>
+              
+               
+            </tr>
+        </ng-template>
+    </p-table>
+    </div>
+    <div class="card" *ngIf="notAvailable">
+      <div class="card-body">
+       Ce formateur n'a aucun cycle pour le moment.
+      </div>
+    </div>
+  
+        </div>
+        <div class="col-md-4">
+            <div class="card card-user">
+              <div class="image">
+                <img src="../assets/img/bg2.png" alt="...">
+              </div>
+              <div class="card-body">
+                <div class="author">
+                  <a href="#">
+                    <img class="avatar border-gray" src="../assets/img/user1.jpg" alt="...">
+                    <h5 class="title">{{formateur.nomprenom}}</h5>
+                  </a>
+                  <p class="description">
+                   {{formateur.specialite}}
+                  </p>
+                </div>
+                <p class="description text-center">
+                Travail chez :{{formateur.entreprise}}
+                  <br>Direction: {{formateur.direction}}
+                  <br> Participe actuellement a {{nb}} Cycles.
+                </p>
+              </div>
+              <hr>
+              <div class="button-container">
+               
+               <button (click)="deleteFormateur(formateur.id)" class="btn btn-outline-secondary">Supprimer ce formateur</button>
+              
+              </div>
+            </div>
+          </div>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,133 @@
+<div class=" panel-header-sm">
+</div>
+<p-table #dt [value]="cycles" 
+             dataKey="index"
+             editMode="row" 
+             responsiveLayout="scroll"
+             [globalFilterFields]="['numact', 'theme', 'datedeb', 'datefin','numsalle']"
+
+             >
+    <ng-template pTemplate="caption">
+        <div class="table-header">
+            La liste des cycles
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" 
+                       (input)=
+    "dt.filterGlobal($event.target.value, 'contains')" 
+                       placeholder="Recherche globale" />
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+           
+            <th pSortableColumn="numact">
+                #Num Cycle <p-sortIcon field="numact"></p-sortIcon>
+            </th>
+            <th pSortableColumn="theme">
+                Thème <p-sortIcon field="theme"></p-sortIcon>
+            </th>
+            <th pSortableColumn="datedeb">
+                Date début <p-sortIcon field="datedeb"></p-sortIcon>
+            </th>
+            <th pSortableColumn="datefin">
+                Date fin <p-sortIcon field="datefin"></p-sortIcon>
+            </th>
+            <th pSortableColumn="numsalle">
+                Numéro Salle <p-sortIcon field="numsalle"></p-sortIcon>
+            </th>
+            
+            <th style="width:8rem"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" 
+                 let-cycle let-editing="editing"
+                 let-ri="rowIndex">
+        <tr [pEditableRow]="cycle"  >
+            
+            <td (click)="editing ? null : navigateToDetails(cycle.id)">
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" 
+                               [(ngModel)]="cycle.numact" />
+                    </ng-template>
+                    <ng-template pTemplate="output" >
+                        {{ cycle.numact }}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td (click)="editing ? null : navigateToDetails(cycle.id)">
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" 
+                               [(ngModel)]="cycle.theme" />
+                    </ng-template>
+                    <ng-template pTemplate="output" >
+                      
+                        {{ cycle.theme }}
+                    </ng-template>
+             
+
+                </p-cellEditor>
+            </td>
+            <td (click)="editing ? null : navigateToDetails(cycle.id)">
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input  pInputText  type="text"  maxlength="10"
+                               [(ngModel)]="datesdeb[ri]" />
+                    </ng-template>
+                    <ng-template pTemplate="output"  >
+                        {{datesdeb[ri] }}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td (click)="editing ? null : navigateToDetails(cycle.id)">
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" maxlength="10"
+                        [(ngModel)]="datesfin[ri]" />
+                    </ng-template>
+                    <ng-template pTemplate="output" >
+                        {{ datesfin[ri] }}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td (click)="editing ? null : navigateToDetails(cycle.id)">
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" 
+                               [(ngModel)]="cycle.numsalle" />
+                    </ng-template>
+                    <ng-template pTemplate="output" >
+                        {{ cycle.numsalle }}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td style="text-align:center">
+                <button *ngIf="!editing"
+                          pButton pRipple type="button" 
+                          pInitEditableRow icon="pi pi-pencil" 
+                          (click)="onRowEditInit(cycle, ri)" 
+                          class="p-button-rounded p-button-text">
+                </button>
+                <button *ngIf="editing" 
+                          pButton pRipple type="button" 
+                          pSaveEditableRow icon="pi pi-check" 
+                          (click)="onRowEditSave(cycle, ri,datesdeb[ri],datesfin[ri])" 
+                          class="p-button-rounded 
+                                 p-button-text 
+                                 p-button-success mr-2">
+                </button>
+                <button *ngIf="editing" 
+                pButton pRipple type="button" 
+                pCancelEditableRow icon="pi pi-times" 
+                (click)="onRowEditCancel(cycle, ri,datesdeb[ri],datesfin[ri])" 
+                class="p-button-rounded 
+                       p-button-text 
+                       p-button-danger">
+       </button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

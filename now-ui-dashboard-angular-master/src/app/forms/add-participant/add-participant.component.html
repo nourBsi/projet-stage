@@ -1,0 +1,55 @@
+<div class=" panel-header-sm">
+</div>
+<div class="card-body">
+    <h2>Formulaire ajout participant :</h2>
+
+    <form #participantForm="ngForm" (ngSubmit)="saveParticipant(participantForm.value)">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Nom et Prénom</label>
+                    <input type="text" ngModel name="nomprenom" class="form-control" placeholder="Nom et Prénom">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="entreprise">Entreprise</label>
+                    <input name="entreprise" ngModel id="entreprise" type="text" class="form-control"
+                        placeholder="Entreprise">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 pr-1">
+                <div class="form-group">
+                    <label>Téléphone Fix</label>
+                    <input type="text" name="telfix" ngModel class="form-control" placeholder="Téléphone Fix">
+                </div>
+            </div>
+            <div class="col-md-6 pl-1">
+                <div class="form-group">
+                    <label>Fax</label>
+                    <input type="text" name="fax" ngModel class="form-control" placeholder="Fax">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 pr-1">
+                <div class="form-group">
+                    <label>Téléphone Portable</label>
+                    <input type="text" name="telport" ngModel class="form-control" placeholder="Téléphone Portable">
+                </div>
+            </div>
+            <div class="col-md-6 pl-1">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="mail" ngModel class="form-control" placeholder="Email">
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <button type="submit" class="btn btn-secondary">Enregistrer</button>
+          </div>
+         
+    </form>
+</div>

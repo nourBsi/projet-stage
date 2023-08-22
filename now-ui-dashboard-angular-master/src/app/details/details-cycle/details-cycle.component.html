@@ -1,0 +1,83 @@
+<div class="main-content">
+    <div class="row">
+    <div class="card w-100">
+      <div class="card-body">
+        <h5 class="card-title">Cycle sur {{cycle.theme}} </h5>
+        <p class="card-text">cycle numero {{cycle.numact}} entre le {{cycle.datedeb | date:"dd/MM/yyyy"}} et le {{cycle.datefin | date:"dd/MM/yyyy"}} dans la salle {{cycle.numsalle}}</p>
+        <button (click)="deleteCycle(cycle.id)" class="btn btn-outline-secondary">Supprimer le Cycle</button>
+      </div>
+    </div>
+</div>
+    <div class="row">
+      <div class="col-md-6 pr-md-2">
+        <div *ngIf="!PnotAvailable">
+            <div class="typography-line">
+                <h6>
+                 Les participants : </h6>
+              </div>
+          <p-table [columns]="colsP" [value]="participants" [tableStyle]="{ 'width': '100%', 'min-width': '40rem' }"
+            responsiveLayout="scroll">
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of colsP">
+                  {{ col.header }}
+                </th>
+                <th>Actions</th>
+
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="colsP">
+              <tr>
+                <td *ngFor="let col of colsP">
+                <a class="link" (click)="navigateToDetailsP(rowData.id)" >{{ rowData[col.field] }}
+                </a> 
+                               </td>
+                               <td  ><a class="link" (click)="deleteParticipantFrom(rowData.id)"> Supprimer</a></td>
+
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+        <div class="card" *ngIf="PnotAvailable">
+          <div class="card-body">
+            Ce cycle n'a aucun participant pour le moment.
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 pr-md-2">
+        <div *ngIf="!FnotAvailable">
+            <div class="typography-line">
+                <h6>
+                  Les formateurs :</h6>
+              </div>
+          <p-table [columns]="colsF" [value]="formateurs" [tableStyle]="{ 'width': '100%', 'min-width': '40rem' }"
+            responsiveLayout="scroll">
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of colsF">
+                  {{ col.header }}
+                </th>
+                <th>Actions</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="colsF">
+              <tr>
+                <td *ngFor="let col of colsF">
+                    <a class="link" (click)="navigateToDetailsF(rowData.id)" >
+                  {{ rowData[col.field] }}</a>
+                </td>
+                <td  ><a class="link" (click)="deleteFormateurFrom(rowData.id)"> Supprimer</a></td>
+
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+        <div class="card" *ngIf="FnotAvailable">
+          <div class="card-body">
+            Ce cycle n'a aucun formateur pour le moment.
+          </div>
+        </div>
+      </div>
+    </div>
+  
+</div>

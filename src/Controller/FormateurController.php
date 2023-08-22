@@ -20,7 +20,7 @@ class FormateurController extends AbstractController {
     }
  
     /**
-     * @Route("/formateurs", methods={"GET"})
+     * @Route("/api/formateurs", methods={"GET"})
      */
     public function getAll() : JsonResponse
     {
@@ -29,7 +29,7 @@ class FormateurController extends AbstractController {
     }
 
      /**
-     * @Route("/formateur/{id}", methods={"GET"})
+     * @Route("/api/formateur/{id}", methods={"GET"})
      */
     public function getFormateurById($id) : JsonResponse
     {
@@ -40,7 +40,7 @@ class FormateurController extends AbstractController {
     }
 
      /**
-     * @Route("/addformateur", methods={"POST"})
+     * @Route("/api/addformateur", methods={"POST"})
      */
     public function addFormateur(Request $request) : JsonResponse
     {
@@ -59,7 +59,7 @@ class FormateurController extends AbstractController {
     }
 
      /**
-     * @Route("/deleteformateur/{id}", methods={"DELETE"})
+     * @Route("/api/deleteformateur/{id}", methods={"DELETE"})
      */
     public function deleteFormateur($id) : JsonResponse
     {
@@ -75,7 +75,7 @@ class FormateurController extends AbstractController {
     }
 
      /**
-     * @Route("/updateformateur", methods={"PUT"})
+     * @Route("/api/updateformateur", methods={"PUT"})
      */
     public function updateFormateur(Request $request) : JsonResponse
     {

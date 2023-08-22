@@ -20,7 +20,7 @@ class ParticipantController extends AbstractController {
     }
  
     /**
-     * @Route("/participants", methods={"GET"})
+     * @Route("/api/participants", methods={"GET"})
      */
     public function getAll() : JsonResponse
     {
@@ -29,7 +29,7 @@ class ParticipantController extends AbstractController {
     }
 
      /**
-     * @Route("/participant/{id}", methods={"GET"})
+     * @Route("/api/participant/{id}", methods={"GET"})
      */
     public function getParticipantById($id) : JsonResponse
     {
@@ -40,7 +40,7 @@ class ParticipantController extends AbstractController {
     }
 
      /**
-     * @Route("/addparticipant", methods={"POST"})
+     * @Route("/api/addparticipant", methods={"POST"})
      */
     public function addParticipant(Request $request) : JsonResponse
     {
@@ -60,11 +60,11 @@ class ParticipantController extends AbstractController {
     }
 
      /**
-     * @Route("/deleteparticipant/{id}", methods={"DELETE"})
+     * @Route("/api/deleteparticipant/{id}", methods={"DELETE"})
      */
-    public function deleteParticipant($participant) : JsonResponse
+    public function deleteParticipant($id) : JsonResponse
     {
-       
+       $participant=$this->participantService->getParticipant($id);
         if (!$participant) {
             return $this->json(['error' => 'Participant not found'], 404);
         }
@@ -76,7 +76,7 @@ class ParticipantController extends AbstractController {
     }
 
      /**
-     * @Route("/updateparticipant", methods={"PUT"})
+     * @Route("/api/updateparticipant", methods={"PUT"})
      */
     public function updateParticipant(Request $request) : JsonResponse
     {

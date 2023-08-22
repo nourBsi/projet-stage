@@ -27,7 +27,7 @@ class CycleController extends AbstractController {
     }
  
     /**
-     * @Route("/cycles", methods={"GET"})
+     * @Route("/api/cycles", methods={"GET"})
      */
     public function getAll() : JsonResponse
     {
@@ -36,7 +36,7 @@ class CycleController extends AbstractController {
     }
 
      /**
-     * @Route("/cycle/{id}", methods={"GET"})
+     * @Route("/api/cycle/{id}", methods={"GET"})
      */
     public function getCycleById($id) : JsonResponse
     {
@@ -47,7 +47,7 @@ class CycleController extends AbstractController {
     }
 
      /**
-     * @Route("/addcycle", methods={"POST"})
+     * @Route("/api/addcycle", methods={"POST"})
      */
     public function addCycle(Request $request) : JsonResponse
     {
@@ -70,7 +70,7 @@ class CycleController extends AbstractController {
     }
 
      /**
-     * @Route("/deletecycle/{id}", methods={"DELETE"})
+     * @Route("/api/deletecycle/{id}", methods={"DELETE"})
      */
     public function deleteCycle($id) : JsonResponse
     {
@@ -86,7 +86,7 @@ class CycleController extends AbstractController {
     }
 
      /**
-     * @Route("/updatecycle", methods={"PUT"})
+     * @Route("/api/updatecycle", methods={"PUT"})
      */
     public function updateCycle(Request $request) : JsonResponse
     {
@@ -98,8 +98,8 @@ class CycleController extends AbstractController {
         }
         $cycle->setnumact($data['numact']);
         $cycle->settheme($data['theme']);
-        $dateDebConverted = \DateTime::createFromFormat('Y-m-d',$data['datedeb']); 
-        $dateFinConverted = \DateTime::createFromFormat('Y-m-d',$data['datefin']); 
+        $dateDebConverted = \DateTime::createFromFormat('d/m/Y',$data['datedeb']); 
+        $dateFinConverted = \DateTime::createFromFormat('d/m/Y',$data['datefin']); 
         $cycle->setdatedeb($dateDebConverted);
         $cycle->setdatefin($dateFinConverted);
         $cycle->setnumsalle($data['numsalle']);
@@ -112,7 +112,7 @@ class CycleController extends AbstractController {
     }
 
      /**
-     * @Route("/addFormateurToCycle", methods={"PUT"})
+     * @Route("/api/addFormateurToCycle", methods={"PUT"})
      */
 
 public function addFormateurToCycle(Request $request):JsonResponse
@@ -126,7 +126,7 @@ public function addFormateurToCycle(Request $request):JsonResponse
     return new JsonResponse($serializedCycle, 200, [],true);
 }
    /**
-     * @Route("/addParticipantToCycle", methods={"PUT"})
+     * @Route("/api/addParticipantToCycle", methods={"PUT"})
      */
 
 
@@ -142,7 +142,7 @@ public function addParticipantToCycle(Request $request):JsonResponse
 }
 
  /**
-     * @Route("/removeParticipantfromCycle", methods={"PUT"})
+     * @Route("/api/removeParticipantfromCycle", methods={"PUT"})
      */
     public function removeParticipant(Request $request):JsonResponse
     {
@@ -155,7 +155,7 @@ public function addParticipantToCycle(Request $request):JsonResponse
         return new JsonResponse($serializedCycle, 200, [],true);
     }
 /**
-     * @Route("/removeFormateurfromCycle", methods={"PUT"})
+     * @Route("/api/removeFormateurfromCycle", methods={"PUT"})
      */
     public function removeFormateur(Request $request):JsonResponse
     {
